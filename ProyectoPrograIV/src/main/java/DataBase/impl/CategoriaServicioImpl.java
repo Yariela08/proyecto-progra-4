@@ -1,31 +1,35 @@
 package DataBase.impl;
 
-import ProyectopIV.Entidades.Categoria;
-import ProyectopIV.servicio.CategoriaServicio;
+import Entidades.Categoria;
+import DataBase.CategoriaServicio;
+import Repository.CategoriaRepositorio;
 
 public class CategoriaServicioImpl implements CategoriaServicio {
 
+       public CategoriaRepositorio  categoriaRepositorio;
+	
+	public CategoriaServicioImpl(CategoriaRepositorio categoriaRepositorio) {
+		this.categoriaRepositorio = categoriaRepositorio;
+	}
+
 	@Override
 	public Categoria consultarTodos(Integer clave) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.categoriaRepositorio.getReferenceById(clave);
 	}
 
 	@Override
-	public Categoria guardar(Categoria entidad) {
-		// TODO Auto-generated method stub
-		return null;
+	public Categoria guardar(Categoria categoria) {
+		return this.categoriaRepositorio.save(categoria);
 	}
 
-	@Override
-	public Categoria actualizar(Categoria entidad) {
-		// TODO Auto-generated method stub
-		return null;
+	@Override 
+	public Categoria actualizar(Categoria categoria) {
+		return this.categoriaRepositorio.save(categoria);
 	}
 
 	@Override
 	public void eliminar(Integer clave) {
-		// TODO Auto-generated method stub
+		this.categoriaRepositorio.deleteById(clave);
 		
 	}
 	
