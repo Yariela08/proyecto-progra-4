@@ -2,31 +2,36 @@ package DataBase.impl;
 
 import Entidades.Compras;
 import DataBase.CompraServicio;
+import Repository.CompraRepositorio;
 
 public class CompraServicioImpl implements CompraServicio {
 
+	private final CompraRepositorio compraRepositorio;
+ 
+	public CompraServicioImpl(CompraRepositorio compraRepositorio) {
+	this.compraRepositorio = compraRepositorio;
+    }
+
 	@Override
 	public Compras consultarTodos(Integer clave) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.compraRepositorio.getReferenceById(clave);
 	}
 
 	@Override
-	public Compras guardar(Compras entidad) {
-		// TODO Auto-generated method stub
-		return null;
+	public Compras guardar(Compras compra) {
+		return this.compraRepositorio.save(compra);
 	}
 
 	@Override
-	public Compras actualizar(Compras entidad) {
-		// TODO Auto-generated method stub
-		return null;
+	public Compras actualizar(Compras compra) {
+		return this.compraRepositorio.save(compra);
 	}
 
 	@Override
 	public void eliminar(Integer clave) {
-		// TODO Auto-generated method stub
+		this.compraRepositorio.deleteById(clave);
 		
 	}
 
 }
+
