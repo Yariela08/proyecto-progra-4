@@ -2,30 +2,36 @@ package DataBse.impl;
 
 import Entidades.Empleado;
 import DataBase.EmpleadoServicio;
+import Repository.EmpleadoRepositorio;
 
 public class EmpleadoServicioImpl implements EmpleadoServicio {
 
+	private final EmpleadoRepositorio empleadoRepositorio;
+ 
+ 
+	public EmpleadoServicioImpl(EmpleadoRepositorio empleadoRepositorio) {
+	this.empleadoRepositorio = empleadoRepositorio;
+}
+
 	@Override
 	public Empleado consultarTodos(Integer clave) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return this.empleadoRepositorio.getReferenceById(clave);
 	}
 
 	@Override
-	public Empleado guardar(Empleado entidad) {
-		// TODO Auto-generated method stub
-		return null;
+	public Empleado guardar(Empleado empleado) {		
+		return this.empleadoRepositorio.save(empleado);
 	}
 
 	@Override
-	public Empleado actualizar(Empleado entidad) {
-		// TODO Auto-generated method stub
-		return null;
+	public Empleado actualizar(Empleado empleado) {
+		return this.empleadoRepositorio.save(empleado);
 	}
 
 	@Override
 	public void eliminar(Integer clave) {
-		// TODO Auto-generated method stub
+		this.empleadoRepositorio.deleteById(clave);
 		
 	}
 
