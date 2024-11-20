@@ -1,4 +1,4 @@
-package DataBase;
+package Servicio;
 
 import Entidades.Categoria;
 
