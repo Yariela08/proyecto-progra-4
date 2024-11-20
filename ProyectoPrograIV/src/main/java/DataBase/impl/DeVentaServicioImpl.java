@@ -2,30 +2,35 @@ package DataBase.impl;
 
 import Entidades.DetalleVenta;
 import DataBase.DeVentaServicio;
+import Repository.DeVentaRepositorio;
 
 public class DeVentaServicioImpl implements DeVentaServicio {
 
+	private final DeVentaRepositorio deVentaRepositorio;
+	
+	
+	public DeVentaServicioImpl(DeVentaRepositorio deVentaRepositorio) {
+		this.deVentaRepositorio = deVentaRepositorio;
+	}
+
 	@Override
 	public DetalleVenta consultarTodos(Integer clave) {
-		// TODO Auto-generated method stub
-		return null;
+	return this.deVentaRepositorio.getReferenceById(clave);
 	}
 
 	@Override
-	public DetalleVenta guardar(DetalleVenta entidad) {
-		// TODO Auto-generated method stub
-		return null;
+	public DetalleVenta guardar(DetalleVenta detalleVenta) {
+		return this.deVentaRepositorio.save(detalleVenta);
 	}
 
 	@Override
-	public DetalleVenta actualizar(DetalleVenta entidad) {
-		// TODO Auto-generated method stub
-		return null;
+	public DetalleVenta actualizar(DetalleVenta detalleVenta) {
+		return this.deVentaRepositorio.save(detalleVenta);
 	}
 
 	@Override
 	public void eliminar(Integer clave) {
-		// TODO Auto-generated method stub
+		 this.deVentaRepositorio.deleteById(clave);
 		
 	}
 
